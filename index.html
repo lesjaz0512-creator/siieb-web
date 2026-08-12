@@ -56,10 +56,17 @@
     }
     .btn:hover { background-color: #d97706; }
 
+    /* Sección Nosotros */
+    .about { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .about h2 { text-align: center; color: var(--primary); margin-bottom: 2rem; font-size: 2rem; }
+    .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .about-box { background: var(--light); padding: 1.8rem; border-radius: 6px; border-left: 4px solid var(--primary); }
+    .about-box h3 { color: var(--primary); margin-bottom: 0.8rem; }
+
     /* Grid de Servicios */
     .services { padding: 4rem 2rem; background-color: var(--light); text-align: center; }
     .services h2 { font-size: 2rem; margin-bottom: 2.5rem; color: var(--primary); }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
     .card {
       background: white;
       padding: 1.8rem;
@@ -73,11 +80,22 @@
     .card ul li { padding: 0.3rem 0; color: #475569; font-size: 0.95rem; }
     .card ul li::before { content: "⚡ "; color: var(--accent); }
 
+    /* Galería de Proyectos */
+    .gallery { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; text-align: center; }
+    .gallery h2 { color: var(--primary); font-size: 2rem; margin-bottom: 2rem; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+    .gallery-item { background: var(--light); border-radius: 6px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .gallery-item img { width: 100%; height: 180px; object-fit: cover; display: block; }
+    .gallery-item p { padding: 0.8rem; font-size: 0.9rem; font-weight: bold; color: var(--primary); }
+
     /* Contacto & Ubicación */
     .contact { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
     .contact h2 { text-align: center; margin-bottom: 1.5rem; color: var(--primary); }
     .info-box { background: #f1f5f9; border-left: 4px solid var(--secondary); padding: 1.2rem; margin-bottom: 2rem; border-radius: 0 6px 6px 0; }
     .info-box p { margin-bottom: 0.4rem; font-size: 0.95rem; }
+    .social-links { margin-top: 1rem; }
+    .social-links a { display: inline-block; margin-right: 1rem; color: var(--primary); font-weight: bold; text-decoration: none; }
+    
     form { display: flex; flex-direction: column; gap: 1rem; }
     input, textarea, select { padding: 0.8rem; border: 1px solid #cbd5e1; border-radius: 5px; font-size: 0.95rem; width: 100%; }
     button[type="submit"] { padding: 0.9rem; background-color: var(--primary); color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 1rem; }
@@ -109,7 +127,9 @@
       <span>Servicios Integrales para la Industria Eléctrica del Bajío</span>
     </div>
     <nav>
+      <a href="#nosotros">Nosotros</a>
       <a href="#servicios">Servicios</a>
+      <a href="#galeria">Proyectos</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </header>
@@ -120,6 +140,22 @@
     <a href="#contacto" class="btn">Solicitar Cotización Técnica</a>
   </section>
 
+  <!-- Sección Nosotros / Diferenciadores -->
+  <section id="nosotros" class="about">
+    <h2>Nosotros</h2>
+    <div class="about-grid">
+      <div class="about-box">
+        <h3>¿Quiénes Somos?</h3>
+        <p>Somos una empresa especializada en brindar soluciones de ingeniería, mantenimiento preventivo, correctivo y suministro de material eléctrico industrial de alta y media tensión en San Juan del Río y la zona del Bajío.</p>
+      </div>
+      <div class="about-box">
+        <h3>Nuestro Compromiso</h3>
+        <p>Garantizar la continuidad operativa y eficiencia energética de nuestros clientes mediante diagnósticos precisos, normatividad de seguridad técnica y atención inmediata ante imprevistos eléctricos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catálogo de Servicios -->
   <section id="servicios" class="services">
     <h2>Catálogo de Servicios e Infraestructura</h2>
     <div class="grid">
@@ -151,7 +187,7 @@
       </div>
 
       <div class="card">
-        <h3>Venta de Material Industrial</h3>
+        <h3>Venta de Material</h3>
         <ul>
           <li>Registros, postes de concreto y torres</li>
           <li>Tubería tipo PAD</li>
@@ -161,6 +197,30 @@
     </div>
   </section>
 
+  <!-- Galería de Trabajos -->
+  <section id="galeria" class="gallery">
+    <h2>Proyectos e Instalaciones</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=500&q=80" alt="Subestación Eléctrica">
+        <p>Subestaciones Compactas</p>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=500&q=80" alt="Mantenimiento a Transformador">
+        <p>Reparación de Transformadores</p>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?auto=format&fit=crop&w=500&q=80" alt="Tableros Industriales">
+        <p>Tableros de Baja Tensión</p>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=500&q=80" alt="Material Eléctrico">
+        <p>Material de Media Tensión</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
   <section id="contacto" class="contact">
     <h2>Contacto y Cotizaciones</h2>
 
@@ -168,6 +228,11 @@
       <p><strong>📍 Dirección:</strong> Carretera San Juan del Río Xlitla. Km 6, San Pedro Ahuacatlan. C.P. 76810. San Juan del Río, Qro.</p>
       <p><strong>📞 Teléfono:</strong> (427) 183 85 85</p>
       <p><strong>✉️ Atención Comercial:</strong> ventas@siieb.com</p>
+      <div class="social-links">
+        <span>Síguenos: </span>
+        <a href="#" target="_blank">Facebook</a>
+        <a href="#" target="_blank">LinkedIn</a>
+      </div>
     </div>
 
     <!-- Formulario vinculado con Formspree -->
@@ -186,7 +251,7 @@
     </form>
   </section>
 
-  <!-- Botón WhatsApp con número real de la empresa -->
+  <!-- Botón WhatsApp Directo -->
   <a href="https://wa.me/524271838585?text=Hola,%20requiero%20una%20cotizacion%20de%20servicios%20electricos%20con%20SIIEB" class="whatsapp-btn" target="_blank">💬 WhatsApp Directo</a>
 
   <footer>
