@@ -1,548 +1,201 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios Tecnológicos & Infraestructura TI</title>
-    <style>
-        :root {
-            --primary: #0F172A;
-            --secondary: #2563EB;
-            --accent: #38BDF8;
-            --bg-light: #F8FAFC;
-            --surface: #FFFFFF;
-            --text-dark: #1E293B;
-            --text-muted: #64748B;
-            --border: #E2E8F0;
-            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publicación / Formulario - Soporte y Soluciones TI</title>
+  <style>
+    :root {
+      --bg-dark: #0d1117;
+      --card-bg: #161b22;
+      --cyan-neon: #00f3ff;
+      --purple-accent: #a855f7;
+      --pink-accent: #ec4899;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --border-glow: rgba(0, 243, 255, 0.3);
+      --input-bg: #0d1117;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        body {
-            font-family: var(--font);
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
+    body {
+      background-color: var(--bg-dark);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
 
-        /* Top Bar */
-        .top-bar {
-            background-color: var(--primary);
-            color: #94A3B8;
-            font-size: 0.875rem;
-            padding: 8px 5%;
-            display: table;
-            width: 100%;
-        }
+    /* Contenedor estilo Dark Mode */
+    .banner-container {
+      width: 100%;
+      max-width: 600px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-glow);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 0 25px rgba(0, 243, 255, 0.15),
+                  0 0 50px rgba(168, 85, 247, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
 
-        .top-bar-left {
-            display: table-cell;
-            text-align: left;
-        }
+    /* Detalle de luz neón superior */
+    .banner-container::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--cyan-neon), var(--purple-accent), var(--pink-accent));
+    }
 
-        .top-bar-right {
-            display: table-cell;
-            text-align: right;
-        }
+    /* Encabezado */
+    .header {
+      margin-bottom: 24px;
+    }
 
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            margin-left: 15px;
-        }
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--cyan-neon);
+      background: rgba(0, 243, 255, 0.1);
+      border: 1px solid var(--cyan-neon);
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
 
-        /* Navigation */
-        header {
-            background-color: var(--surface);
-            border-bottom: 1px solid var(--border);
-            padding: 15px 5%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+    .title {
+      color: var(--text-main);
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
 
-        .nav-container {
-            display: table;
-            width: 100%;
-        }
+    .title span {
+      color: var(--cyan-neon);
+      text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+    }
 
-        .logo {
-            display: table-cell;
-            vertical-align: middle;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
+    .subtitle {
+      color: var(--text-muted);
+      margin-top: 10px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
 
-        .logo span {
-            color: var(--secondary);
-        }
+    /* Formulario Formspree */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 20px;
+    }
 
-        nav {
-            display: table-cell;
-            text-align: right;
-            vertical-align: middle;
-        }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
 
-        nav a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            margin-left: 20px;
-            font-size: 0.95rem;
-        }
+    .form-group label {
+      color: var(--text-main);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
 
-        nav a:hover {
-            color: var(--secondary);
-        }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--input-bg);
+      border: 1px solid rgba(0, 243, 255, 0.2);
+      border-radius: 8px;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        .btn-nav {
-            background-color: var(--secondary);
-            color: white !important;
-            padding: 8px 18px;
-            border-radius: 6px;
-            transition: background 0.3s;
-        }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--cyan-neon);
+      box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+    }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-            color: white;
-            padding: 80px 5%;
-            text-align: center;
-        }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
 
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            letter-spacing: -0.5px;
-        }
+    /* Botón de envío */
+    .cta-button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--cyan-neon), #00b4d8);
+      color: #040d1a;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+      transition: all 0.3s ease;
+      margin-top: 8px;
+    }
 
-        .hero p {
-            font-size: 1.15rem;
-            color: #94A3B8;
-            max-width: 750px;
-            margin: 0 auto 35px auto;
-        }
-
-        .hero-buttons {
-            margin-top: 20px;
-        }
-
-        .btn-primary {
-            background-color: var(--secondary);
-            color: white;
-            padding: 14px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-            margin: 5px;
-        }
-
-        .btn-secondary {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            padding: 14px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-            margin: 5px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        /* Services Section */
-        .section {
-            padding: 70px 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 1.85rem;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .section-title p {
-            color: var(--text-muted);
-            font-size: 1rem;
-        }
-
-        .services-grid {
-            display: table;
-            width: 100%;
-            table-layout: fixed;
-            border-spacing: 20px;
-        }
-
-        .services-row {
-            display: table-row;
-        }
-
-        .service-card {
-            display: table-cell;
-            background: var(--surface);
-            padding: 30px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            vertical-align: top;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
-
-        .service-icon {
-            width: 50px;
-            height: 50px;
-            background-color: #EFF6FF;
-            color: var(--secondary);
-            border-radius: 8px;
-            line-height: 50px;
-            text-align: center;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-
-        .service-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 12px;
-            color: var(--primary);
-        }
-
-        .service-card ul {
-            list-style: none;
-            margin-top: 15px;
-        }
-
-        .service-card ul li {
-            padding: 5px 0;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            border-bottom: 1px dashed #F1F5F9;
-        }
-
-        .service-card ul li::before {
-            content: "✓ ";
-            color: var(--secondary);
-            font-weight: bold;
-        }
-
-        /* Coverage Section */
-        .coverage-box {
-            background: var(--primary);
-            color: white;
-            border-radius: 12px;
-            padding: 40px;
-            margin-top: 40px;
-            display: table;
-            width: 100%;
-        }
-
-        .coverage-left {
-            display: table-cell;
-            width: 60%;
-            vertical-align: middle;
-            padding-right: 30px;
-        }
-
-        .coverage-right {
-            display: table-cell;
-            width: 40%;
-            vertical-align: middle;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 25px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .coverage-left h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .coverage-right h4 {
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
-
-        /* Contact Section */
-        .contact-container {
-            display: table;
-            width: 100%;
-            background: var(--surface);
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            overflow: hidden;
-        }
-
-        .contact-info {
-            display: table-cell;
-            width: 40%;
-            background: #F1F5F9;
-            padding: 40px;
-            vertical-align: top;
-        }
-
-        .contact-form {
-            display: table-cell;
-            width: 60%;
-            padding: 40px;
-            vertical-align: top;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .form-group input, 
-        .form-group select, 
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            font-family: inherit;
-            font-size: 0.95rem;
-        }
-
-        .btn-submit {
-            background-color: var(--secondary);
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: #94A3B8;
-            padding: 40px 5% 20px 5%;
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            margin-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.85rem;
-        }
-
-        /* Floating WhatsApp Button */
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25D366;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-            z-index: 100;
-            line-height: 60px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-    </style>
+    .cta-button:hover {
+      box-shadow: 0 0 25px rgba(0, 243, 255, 0.7);
+      transform: translateY(-2px);
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Top Info Bar -->
-    <div class="top-bar">
-        <div class="top-bar-left">
-            📍 Cobertura: Querétaro, Norte del Edo. de México y Región
-        </div>
-        <div class="top-bar-right">
-            <span>Soporte e Informes:</span>
-            <a href="tel:+524422260201">📞 442 226 0201</a>
-        </div>
+  <div class="banner-container">
+    <div class="header">
+      <span class="badge">Punto de Venta & TI</span>
+      <h1 class="title">Lleva la gestión de tu negocio al <span>siguiente nivel</span></h1>
+      <p class="subtitle">Déjanos tus datos para agendar una asesoría sobre tu sistema de Punto de Venta o soporte de TI.</p>
     </div>
 
-    <!-- Navigation Header -->
-    <header>
-        <div class="nav-container">
-            <div class="logo">
-                SOLUCIONES<span>TI</span>
-            </div>
-            <nav>
-                <a href="#inicio">Inicio</a>
-                <a href="#servicios">Servicios</a>
-                <a href="#cobertura">Cobertura</a>
-                <a href="#contacto" class="btn-nav">Solicitar Cotización</a>
-            </nav>
-        </div>
-    </header>
+    <!-- Integración del Endpoint de Formspree -->
+    <form class="contact-form" action="https://formspree.io/f/maewbqye" method="POST">
+      <div class="form-group">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required>
+      </div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="inicio">
-        <h1>Soluciones de Infraestructura & Soporte TI Corporativo</h1>
-        <p>Especialistas en redes estructuradas, ciberseguridad perimetral, sistemas de videovigilancia y soporte técnico presencial o remoto para empresas y comercios.</p>
-        <div class="hero-buttons">
-            <a href="#contacto" class="btn-primary">Cotizar Proyecto</a>
-            <a href="https://wa.me/524422260201?text=Hola,%20me%20interesa%20una%20cotización%20de%20servicios%20TI" class="btn-secondary" target="_blank">Atención por WhatsApp</a>
-        </div>
-    </section>
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+      </div>
 
-    <!-- Services Section -->
-    <section class="section" id="servicios">
-        <div class="section-title">
-            <h2>Nuestras Soluciones Tecnológicas</h2>
-            <p>Servicios integrales diseñados para garantizar la continuidad y seguridad de tu empresa</p>
-        </div>
+      <div class="form-group">
+        <label for="telefono">Teléfono / WhatsApp</label>
+        <input type="tel" id="telefono" name="telefono" placeholder="Ej. 442 123 4567" required>
+      </div>
 
-        <div class="services-grid">
-            <div class="services-row">
-                <!-- Service 1 -->
-                <div class="service-card">
-                    <div class="service-icon">🌐</div>
-                    <h3>Redes e Infraestructura</h3>
-                    <p>Diseño e instalación de redes robustas para asegurar alta velocidad y cero caídas de conexión.</p>
-                    <ul>
-                        <li>Cableado estructurado UTP / Fibra Óptica</li>
-                        <li>Equipamiento de Racks y Sites de Cómputo</li>
-                        <li>Switches, Routers y Puntos de Acceso Wi-Fi</li>
-                        <li>Configuración de No-Breaks y Respaldo</li>
-                    </ul>
-                </div>
+      <div class="form-group">
+        <label for="mensaje">¿Qué servicio te interesa o qué requiere tu negocio?</label>
+        <textarea id="mensaje" name="mensaje" placeholder="Escribe aquí los detalles de tu consulta..." required></textarea>
+      </div>
 
-                <!-- Service 2 -->
-                <div class="service-card">
-                    <div class="service-icon">🛡️</div>
-                    <h3>Ciberseguridad & CCTV</h3>
-                    <p>Protección perimetral de activos digitales y monitoreo físico en tiempo real.</p>
-                    <ul>
-                        <li>Cámaras de Seguridad CCTV (IP, PTZ, Wi-Fi)</li>
-                        <li>Firewalls Perimetrales (pfSense) y VPNs</li>
-                        <li>Antivirus Administrado por IA (Cylance)</li>
-                        <li>Controles de Acceso y Filtrado Web</li>
-                    </ul>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="service-card">
-                    <div class="service-icon">🖥️</div>
-                    <h3>Soporte TI & Puntos de Venta</h3>
-                    <p>Mantenimiento especializado para equipo de cómputo y sistemas comerciales.</p>
-                    <ul>
-                        <li>Mantenimiento Preventivo y Correctivo</li>
-                        <li>Instalación de Sistemas Punto de Venta (POS)</li>
-                        <li>Pólizas de Soporte Mensual Empresarial</li>
-                        <li>Atención Remota y Presencial en Sitio</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Coverage Banner -->
-        <div class="coverage-box" id="cobertura">
-            <div class="coverage-left">
-                <h3>Cobertura y Tiempos de Respuesta Garantizados</h3>
-                <p>Ofrecemos soporte técnico directo con cobertura presencial prioritaria en el norte del Estado de México (Polotitlán), Querétaro y zonas limítrofes, además de asistencia remota inmediata.</p>
-            </div>
-            <div class="coverage-right">
-                <h4>Acuerdos de Nivel de Servicio (SLA)</h4>
-                <p>✔ Asistencia Remota: Inmediata / &lt; 1 hora<br>
-                ✔ Atención Presencial: Mismo día / Programado<br>
-                ✔ Diagnóstico de Infraestructura Sin Costo</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section" id="contacto">
-        <div class="section-title">
-            <h2>Solicita una Cotización o Asesoría</h2>
-            <p>Déjanos tus datos y un ingeniero especialista se pondrá en contacto contigo.</p>
-        </div>
-
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Contacto Directo</h3>
-                <p style="margin-bottom: 25px; color: var(--text-muted);">Estamos listos para atender los requerimientos tecnológicos de tu negocio.</p>
-                
-                <p><strong>📍 Ubicación de Servicio:</strong><br>Querétaro, Polotitlán, Tecozautla y áreas metropolitanas.</p><br>
-                <p><strong>📞 Teléfono / WhatsApp:</strong><br>+52 442 226 0201</p><br>
-                <p><strong>✉️ Correo Electrónico:</strong><br>contacto@soluciones-ti.com.mx</p>
-            </div>
-
-            <div class="contact-form">
-                <form action="#" method="POST" onsubmit="alert('¡Gracias por comunicarte! Un especialista te contactará a la brevedad.'); return false;">
-                    <div class="form-group">
-                        <label for="nombre">Nombre Completo *</label>
-                        <input type="text" id="nombre" name="nombre" required placeholder="Ej. Carlos Mendoza">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="contacto_input">Teléfono / WhatsApp *</label>
-                        <input type="text" id="contacto_input" name="contacto" required placeholder="Ej. 442 123 4567">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="servicio">Servicio de Interés *</label>
-                        <select id="servicio" name="servicio" required>
-                            <option value="">-- Selecciona una opción --</option>
-                            <option value="redes">Redes y Cableado Estructurado</option>
-                            <option value="cctv">Cámaras de Seguridad y CCTV</option>
-                            <option value="soporte">Soporte Técnico y Pólizas TI</option>
-                            <option value="pos">Sistemas de Punto de Venta (POS)</option>
-                            <option value="ciberseguridad">Ciberseguridad y VPN</option>
-                            <option value="otro">Otro Requerimiento</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="mensaje">Detalles del Proyecto o Consulta</label>
-                        <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describe brevemente tus requerimientos o número de equipos..."></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-submit">Enviar Solicitud de Cotización</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div style="text-align: center;">
-            <p><strong>SOLUCIONES TI & INFRAESTRUCTURA</strong></p>
-            <p>Servicios de Tecnología, Redes, Seguridad y Soporte Computacional.</p>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2026 Soluciones TI. Todos los derechos reservados.
-        </div>
-    </footer>
-
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/524422260201?text=Hola,%20me%20interesa%20una%20cotización%20de%20servicios%20TI" class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
-        💬
-    </a>
+      <button type="submit" class="cta-button">Enviar Solicitud</button>
+    </form>
+  </div>
 
 </body>
 </html>
