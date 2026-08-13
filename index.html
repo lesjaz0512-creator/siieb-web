@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Publicación / Formulario - Soporte y Soluciones TI</title>
+  <title>Soporte y Soluciones TI | Puntos de Venta</title>
   <style>
     :root {
       --bg-dark: #0d1117;
@@ -13,7 +13,7 @@
       --pink-accent: #ec4899;
       --text-main: #f0f6fc;
       --text-muted: #8b949e;
-      --border-glow: rgba(0, 243, 255, 0.3);
+      --border-glow: rgba(0, 243, 255, 0.25);
       --input-bg: #0d1117;
     }
 
@@ -26,82 +26,172 @@
 
     body {
       background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* Navegación */
+    header {
+      background: rgba(22, 27, 34, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-glow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 15px 5%;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      min-height: 100vh;
-      padding: 20px;
     }
 
-    /* Contenedor estilo Dark Mode */
-    .banner-container {
-      width: 100%;
-      max-width: 600px;
-      background: var(--card-bg);
-      border: 1px solid var(--border-glow);
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: 0 0 25px rgba(0, 243, 255, 0.15),
-                  0 0 50px rgba(168, 85, 247, 0.1);
-      position: relative;
-      overflow: hidden;
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-main);
+      text-decoration: none;
     }
 
-    /* Detalle de luz neón superior */
-    .banner-container::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      height: 4px;
-      background: linear-gradient(90deg, var(--cyan-neon), var(--purple-accent), var(--pink-accent));
+    .logo span {
+      color: var(--cyan-neon);
+      text-shadow: 0 0 8px rgba(0, 243, 255, 0.6);
     }
 
-    /* Encabezado */
-    .header {
-      margin-bottom: 24px;
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--cyan-neon);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 80px 5% 60px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .badge {
       display: inline-block;
-      padding: 6px 12px;
-      font-size: 0.75rem;
+      padding: 6px 16px;
+      font-size: 0.8rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       color: var(--cyan-neon);
       background: rgba(0, 243, 255, 0.1);
       border: 1px solid var(--cyan-neon);
       border-radius: 20px;
-      margin-bottom: 12px;
+      margin-bottom: 20px;
     }
 
-    .title {
-      color: var(--text-main);
-      font-size: 1.8rem;
+    .hero h1 {
+      font-size: 2.8rem;
       font-weight: 800;
       line-height: 1.2;
+      margin-bottom: 20px;
     }
 
-    .title span {
+    .hero h1 span {
       color: var(--cyan-neon);
-      text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+      text-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
     }
 
-    .subtitle {
+    .hero p {
       color: var(--text-muted);
-      margin-top: 10px;
-      font-size: 0.95rem;
-      line-height: 1.5;
+      font-size: 1.1rem;
+      margin-bottom: 30px;
     }
 
-    /* Formulario Formspree */
+    /* Sección de Servicios */
+    .services {
+      padding: 60px 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-glow);
+      border-radius: 12px;
+      padding: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      color: var(--purple-accent);
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: var(--text-main);
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Sección Formulario */
+    .contact-section {
+      padding: 60px 5% 100px;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .form-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border-glow);
+      border-radius: 16px;
+      padding: 35px;
+      box-shadow: 0 0 30px rgba(0, 243, 255, 0.15), 0 0 50px rgba(168, 85, 247, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--cyan-neon), var(--purple-accent), var(--pink-accent));
+    }
+
+    .form-container h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .form-container p {
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 0.95rem;
+    }
+
     .contact-form {
       display: flex;
       flex-direction: column;
       gap: 16px;
-      margin-top: 20px;
     }
 
     .form-group {
@@ -111,7 +201,6 @@
     }
 
     .form-group label {
-      color: var(--text-main);
       font-size: 0.85rem;
       font-weight: 600;
     }
@@ -126,7 +215,7 @@
       color: var(--text-main);
       font-size: 0.95rem;
       outline: none;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      transition: border-color 0.3s, box-shadow 0.3s;
     }
 
     .form-group input:focus,
@@ -137,11 +226,10 @@
 
     .form-group textarea {
       resize: vertical;
-      min-height: 90px;
+      min-height: 100px;
     }
 
-    /* Botón de envío */
-    .cta-button {
+    .btn-submit {
       width: 100%;
       padding: 14px;
       background: linear-gradient(135deg, var(--cyan-neon), #00b4d8);
@@ -153,49 +241,97 @@
       cursor: pointer;
       box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
       transition: all 0.3s ease;
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
-    .cta-button:hover {
+    .btn-submit:hover {
       box-shadow: 0 0 25px rgba(0, 243, 255, 0.7);
       transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      text-align: center;
+      padding: 25px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
     }
   </style>
 </head>
 <body>
 
-  <div class="banner-container">
-    <div class="header">
-      <span class="badge">Punto de Venta & TI</span>
-      <h1 class="title">Lleva la gestión de tu negocio al <span>siguiente nivel</span></h1>
-      <p class="subtitle">Déjanos tus datos para agendar una asesoría sobre tu sistema de Punto de Venta o soporte de TI.</p>
+  <!-- Navegación -->
+  <header>
+    <a href="#" class="logo">Soporte TI <span>LJH</span></a>
+    <nav>
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- Principal / Hero -->
+  <section class="hero">
+    <span class="badge">Sistemas & Punto de Venta</span>
+    <h1>Soluciones Tecnológicas para <span>Impulsar tu Negocio</span></h1>
+    <p>Instalación, soporte técnico especializado y configuración de sistemas de Punto de Venta diseñados para optimizar tus operaciones y ventas.</p>
+  </section>
+
+  <!-- Lista de Servicios -->
+  <section class="services" id="servicios">
+    <div class="card">
+      <div class="card-icon">💻</div>
+      <h3>Puntos de Venta</h3>
+      <p>Instalación y configuración completa de software y hardware (impresoras de tickets, lectores de código de barras, cajones de dinero).</p>
     </div>
+    <div class="card">
+      <div class="card-icon">🛠️</div>
+      <h3>Soporte Técnico</h3>
+      <p>Mantenimiento preventivo, correctivo y solución de problemas técnicos para mantener tu infraestructura siempre operativa.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔒</div>
+      <h3>Infraestructura & Redes</h3>
+      <p>Optimización de redes locales, resguardo de datos y configuraciones a la medida para la seguridad de tu empresa.</p>
+    </div>
+  </section>
 
-    <!-- Integración del Endpoint de Formspree -->
-    <form class="contact-form" action="https://formspree.io/f/maewbqye" method="POST">
-      <div class="form-group">
-        <label for="nombre">Nombre completo</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required>
-      </div>
+  <!-- Sección Formulario de Contacto -->
+  <section class="contact-section" id="contacto">
+    <div class="form-container">
+      <h2>Contáctanos</h2>
+      <p>Llena el siguiente formulario y te responderemos a la brevedad para agendar una asesoría.</p>
 
-      <div class="form-group">
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
-      </div>
+      <form class="contact-form" action="https://formspree.io/f/maewbqye" method="POST">
+        <div class="form-group">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required>
+        </div>
 
-      <div class="form-group">
-        <label for="telefono">Teléfono / WhatsApp</label>
-        <input type="tel" id="telefono" name="telefono" placeholder="Ej. 442 123 4567" required>
-      </div>
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+        </div>
 
-      <div class="form-group">
-        <label for="mensaje">¿Qué servicio te interesa o qué requiere tu negocio?</label>
-        <textarea id="mensaje" name="mensaje" placeholder="Escribe aquí los detalles de tu consulta..." required></textarea>
-      </div>
+        <div class="form-group">
+          <label for="telefono">Teléfono / WhatsApp</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="Ej. 442 123 4567" required>
+        </div>
 
-      <button type="submit" class="cta-button">Enviar Solicitud</button>
-    </form>
-  </div>
+        <div class="form-group">
+          <label for="mensaje">¿Qué servicio o sistema necesitas?</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Describe brevemente lo que requiere tu negocio..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Enviar Mensaje</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Pie de página -->
+  <footer>
+    <p>&copy; 2026 Soporte y Soluciones TI LJH. Todos los derechos reservados.</p>
+  </footer>
 
 </body>
 </html>
