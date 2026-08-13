@@ -1,326 +1,548 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soporte y Soluciones TI LJH | Soluciones Tecnológicas y Desarrollo Web</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Configuración de colores personalizados basados en el logo -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brandCyan: '#66FCF1',
-                        brandPurple: '#833AB4',
-                        brandPink: '#FD1D1D',
-                        brandDark: '#0B0C10',
-                        brandGray: '#1F2833'
-                    }
-                }
-            }
+    <title>Servicios Tecnológicos & Infraestructura TI</title>
+    <style>
+        :root {
+            --primary: #0F172A;
+            --secondary: #2563EB;
+            --accent: #38BDF8;
+            --bg-light: #F8FAFC;
+            --surface: #FFFFFF;
+            --text-dark: #1E293B;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
-    </script>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font);
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--primary);
+            color: #94A3B8;
+            font-size: 0.875rem;
+            padding: 8px 5%;
+            display: table;
+            width: 100%;
+        }
+
+        .top-bar-left {
+            display: table-cell;
+            text-align: left;
+        }
+
+        .top-bar-right {
+            display: table-cell;
+            text-align: right;
+        }
+
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: table;
+            width: 100%;
+        }
+
+        .logo {
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav {
+            display: table-cell;
+            text-align: right;
+            vertical-align: middle;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 20px;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        .btn-nav {
+            background-color: var(--secondary);
+            color: white !important;
+            padding: 8px 18px;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: white;
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #94A3B8;
+            max-width: 750px;
+            margin: 0 auto 35px auto;
+        }
+
+        .hero-buttons {
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Services Section */
+        .section {
+            padding: 70px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 1.85rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .services-grid {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+            border-spacing: 20px;
+        }
+
+        .services-row {
+            display: table-row;
+        }
+
+        .service-card {
+            display: table-cell;
+            background: var(--surface);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            vertical-align: top;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #EFF6FF;
+            color: var(--secondary);
+            border-radius: 8px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+
+        .service-card ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .service-card ul li {
+            padding: 5px 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-bottom: 1px dashed #F1F5F9;
+        }
+
+        .service-card ul li::before {
+            content: "✓ ";
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* Coverage Section */
+        .coverage-box {
+            background: var(--primary);
+            color: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-top: 40px;
+            display: table;
+            width: 100%;
+        }
+
+        .coverage-left {
+            display: table-cell;
+            width: 60%;
+            vertical-align: middle;
+            padding-right: 30px;
+        }
+
+        .coverage-right {
+            display: table-cell;
+            width: 40%;
+            vertical-align: middle;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .coverage-left h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .coverage-right h4 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: table;
+            width: 100%;
+            background: var(--surface);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .contact-info {
+            display: table-cell;
+            width: 40%;
+            background: #F1F5F9;
+            padding: 40px;
+            vertical-align: top;
+        }
+
+        .contact-form {
+            display: table-cell;
+            width: 60%;
+            padding: 40px;
+            vertical-align: top;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        .btn-submit {
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: #94A3B8;
+            padding: 40px 5% 20px 5%;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.85rem;
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            line-height: 60px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
 </head>
-<body class="bg-brandDark text-gray-200 font-sans antialiased">
+<body>
 
-    <!-- 1. ENCABEZADO / NAVBAR -->
-    <header class="sticky top-0 z-50 bg-black/80 backdrop-blur-sm border-b border-gray-800 text-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-24">
-            <!-- Logo -->
-            <a href="#" class="flex items-center gap-3">
-                <img src="logo.jpeg" alt="Soporte y Soluciones TI LJH" class="h-16 w-auto object-contain">
-            </a>
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            📍 Cobertura: Querétaro, Norte del Edo. de México y Región
+        </div>
+        <div class="top-bar-right">
+            <span>Soporte e Informes:</span>
+            <a href="tel:+524422260201">📞 442 226 0201</a>
+        </div>
+    </div>
 
-            <!-- Menú Escritorio -->
-            <nav class="hidden md:flex space-x-6 font-medium text-sm lg:text-base">
-                <a href="#inicio" class="hover:text-brandCyan transition">Inicio</a>
-                <a href="#servicios" class="hover:text-brandCyan transition">Servicios</a>
-                <a href="#paginas-web" class="hover:text-brandCyan transition">Páginas Web</a>
-                <a href="#nosotros" class="hover:text-brandCyan transition">Por Qué Elegirnos</a>
-                <a href="#contacto" class="hover:text-brandCyan transition">Contacto</a>
-            </nav>
-
-            <!-- Botón CTA Header -->
-            <div class="hidden md:block">
-                <a href="https://wa.me/5214271219853?text=Hola,%20requiero%20informes%20sobre%20sus%20servicios" target="_blank" class="bg-brandPurple hover:bg-brandPink text-white font-semibold px-5 py-2.5 rounded-lg shadow transition flex items-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp
-                </a>
+    <!-- Navigation Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                SOLUCIONES<span>TI</span>
             </div>
+            <nav>
+                <a href="#inicio">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#cobertura">Cobertura</a>
+                <a href="#contacto" class="btn-nav">Solicitar Cotización</a>
+            </nav>
         </div>
     </header>
 
-    <!-- 2. HERO SECTION -->
-    <section id="inicio" class="py-24 lg:py-36 relative overflow-hidden bg-brandDark">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <span class="bg-brandCyan/10 text-brandCyan text-xs font-semibold px-3.5 py-1.5 rounded-full border border-brandCyan/30 uppercase tracking-wider">Tu Aliado Tecnológico Integral</span>
-                <h1 class="text-4xl lg:text-5xl font-extrabold mt-4 leading-tight text-white">
-                    Soluciones de TI y Desarrollo Web que Impulsan tu Negocio
-                </h1>
-                <p class="mt-6 text-gray-300 text-lg leading-relaxed">
-                    Desde el soporte técnico especializado y la infraestructura de redes, hasta el diseño y creación de tu presencia digital. En LJH hacemos que la tecnología trabaje para ti.
-                </p>
-                <div class="mt-8 flex flex-col sm:flex-row gap-4">
-                    <a href="https://wa.me/524271219853?text=Hola,%20necesito%20una%20cotización" target="_blank" class="bg-brandCyan hover:bg-white text-brandDark font-bold text-center px-6 py-3.5 rounded-lg shadow-lg transition flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-rocket"></i> Solicitar Cotización
-                    </a>
-                    <a href="#servicios" class="border border-gray-600 hover:border-gray-400 text-gray-200 font-semibold text-center px-6 py-3.5 rounded-lg transition flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-layer-group"></i> Ver Todos los Servicios
-                    </a>
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <h1>Soluciones de Infraestructura & Soporte TI Corporativo</h1>
+        <p>Especialistas en redes estructuradas, ciberseguridad perimetral, sistemas de videovigilancia y soporte técnico presencial o remoto para empresas y comercios.</p>
+        <div class="hero-buttons">
+            <a href="#contacto" class="btn-primary">Cotizar Proyecto</a>
+            <a href="https://wa.me/524422260201?text=Hola,%20me%20interesa%20una%20cotización%20de%20servicios%20TI" class="btn-secondary" target="_blank">Atención por WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="servicios">
+        <div class="section-title">
+            <h2>Nuestras Soluciones Tecnológicas</h2>
+            <p>Servicios integrales diseñados para garantizar la continuidad y seguridad de tu empresa</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="services-row">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Redes e Infraestructura</h3>
+                    <p>Diseño e instalación de redes robustas para asegurar alta velocidad y cero caídas de conexión.</p>
+                    <ul>
+                        <li>Cableado estructurado UTP / Fibra Óptica</li>
+                        <li>Equipamiento de Racks y Sites de Cómputo</li>
+                        <li>Switches, Routers y Puntos de Acceso Wi-Fi</li>
+                        <li>Configuración de No-Breaks y Respaldo</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Ciberseguridad & CCTV</h3>
+                    <p>Protección perimetral de activos digitales y monitoreo físico en tiempo real.</p>
+                    <ul>
+                        <li>Cámaras de Seguridad CCTV (IP, PTZ, Wi-Fi)</li>
+                        <li>Firewalls Perimetrales (pfSense) y VPNs</li>
+                        <li>Antivirus Administrado por IA (Cylance)</li>
+                        <li>Controles de Acceso y Filtrado Web</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">🖥️</div>
+                    <h3>Soporte TI & Puntos de Venta</h3>
+                    <p>Mantenimiento especializado para equipo de cómputo y sistemas comerciales.</p>
+                    <ul>
+                        <li>Mantenimiento Preventivo y Correctivo</li>
+                        <li>Instalación de Sistemas Punto de Venta (POS)</li>
+                        <li>Pólizas de Soporte Mensual Empresarial</li>
+                        <li>Atención Remota y Presencial en Sitio</li>
+                    </ul>
                 </div>
             </div>
-            <div class="flex justify-center relative">
-                <div class="relative w-full max-w-md bg-gray-900 p-8 rounded-2xl border border-gray-800 shadow-2xl z-10">
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-4 p-4 bg-gray-800 rounded-xl border border-gray-700">
-                            <i class="fa-solid fa-server text-3xl text-brandCyan"></i>
-                            <div>
-                                <h4 class="font-bold text-white">Soporte y Redes</h4>
-                                <p class="text-xs text-gray-400">Infraestructura y Mantenimiento</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-4 p-4 bg-gray-800 rounded-xl border border-gray-700">
-                            <i class="fa-solid fa-code text-3xl text-brandPurple"></i>
-                            <div>
-                                <h4 class="font-bold text-white">Desarrollo Web</h4>
-                                <p class="text-xs text-gray-400">Páginas y Tiendas Online</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        </div>
+
+        <!-- Coverage Banner -->
+        <div class="coverage-box" id="cobertura">
+            <div class="coverage-left">
+                <h3>Cobertura y Tiempos de Respuesta Garantizados</h3>
+                <p>Ofrecemos soporte técnico directo con cobertura presencial prioritaria en el norte del Estado de México (Polotitlán), Querétaro y zonas limítrofes, además de asistencia remota inmediata.</p>
+            </div>
+            <div class="coverage-right">
+                <h4>Acuerdos de Nivel de Servicio (SLA)</h4>
+                <p>✔ Asistencia Remota: Inmediata / &lt; 1 hora<br>
+                ✔ Atención Presencial: Mismo día / Programado<br>
+                ✔ Diagnóstico de Infraestructura Sin Costo</p>
             </div>
         </div>
     </section>
 
-    <!-- 3. SERVICIOS DE TI -->
-    <section id="servicios" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-brandGray/20 rounded-2xl">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <h2 class="text-3xl font-extrabold text-white">Nuestros Servicios de TI</h2>
-            <p class="mt-4 text-gray-400">Soporte técnico, infraestructura y seguridad para mantener tu negocio operativo.</p>
+    <!-- Contact Section -->
+    <section class="section" id="contacto">
+        <div class="section-title">
+            <h2>Solicita una Cotización o Asesoría</h2>
+            <p>Déjanos tus datos y un ingeniero especialista se pondrá en contacto contigo.</p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="bg-gray-900 p-6 rounded-xl shadow-sm border border-gray-800 hover:border-brandCyan/30 hover:shadow-brandCyan/10 transition">
-                <div class="w-12 h-12 bg-gray-800 text-brandCyan rounded-lg flex items-center justify-center text-xl font-bold mb-4">
-                    <i class="fa-solid fa-microchip"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-2 text-white">Soporte Técnico</h3>
-                <ul class="text-sm text-gray-400 space-y-2">
-                    <li><i class="fa-solid fa-check text-brandCyan text-xs mr-2"></i>Mantenimiento preventivo y correctivo.</li>
-                    <li><i class="fa-solid fa-check text-brandCyan text-xs mr-2"></i>Reparación de Laptops, PCs y Servidores.</li>
-                </ul>
-            </div>
-
-            <div class="bg-gray-900 p-6 rounded-xl shadow-sm border border-gray-800 hover:border-brandCyan/30 hover:shadow-brandCyan/10 transition">
-                <div class="w-12 h-12 bg-gray-800 text-brandCyan rounded-lg flex items-center justify-center text-xl font-bold mb-4">
-                    <i class="fa-solid fa-network-wired"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-2 text-white">Redes e Infraestructura</h3>
-                <ul class="text-sm text-gray-400 space-y-2">
-                    <li><i class="fa-solid fa-check text-brandCyan text-xs mr-2"></i>Instalación de redes LAN y Wi-Fi.</li>
-                    <li><i class="fa-solid fa-check text-brandCyan text-xs mr-2"></i>Túneles VPN seguros y Firewalls.</li>
-                </ul>
-            </div>
-
-            <div class="bg-gray-900 p-6 rounded-xl shadow-sm border border-gray-800 hover:border-brandCyan/30 hover:shadow-brandCyan/10 transition">
-                <div class="w-12 h-12 bg-gray-800 text-brandCyan rounded-lg flex items-center justify-center text-xl font-bold mb-4">
-                    <i class="fa-solid fa-print"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-2 text-white">Puntos de Venta (POS)</h3>
-                <ul class="text-sm text-gray-400 space-y-2">
-                    <li><i class="fa-solid fa-check text-brandCyan text-xs mr-2"></i>Instalación de sistemas de cobro.</li>
-                    <li><i class="fa-solid fa-check text-brandCyan text-xs mr-2"></i>Configuración de impresoras térmicas.</li>
-                </ul>
-            </div>
-
-            <div class="bg-gray-900 p-6 rounded-xl shadow-sm border border-gray-800 hover:border-brandCyan/30 hover:shadow-brandCyan/10 transition">
-                <div class="w-12 h-12 bg-gray-800 text-brandCyan rounded-lg flex items-center justify-center text-xl font-bold mb-4">
-                    <i class="fa-solid fa-shield-halved"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-2 text-white">Seguridad y Respaldo</h3>
-                <ul class="text-sm text-gray-400 space-y-2">
-                    <li><i class="fa-solid fa-check text-brandCyan text-xs mr-2"></i>Planes de respaldo de datos (Backups).</li>
-                    <li><i class="fa-solid fa-check text-brandCyan text-xs mr-2"></i>Antivirus y protección Phishing.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. PÁGINAS WEB -->
-    <section id="paginas-web" class="py-24 bg-brandDark">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12 border-l-4 border-brandPurple bg-gray-900 rounded-r-2xl p-10 shadow-2xl">
-            <div class="flex-shrink-0">
-                <div class="w-24 h-24 bg-gray-800 text-brandPurple rounded-2xl flex items-center justify-center text-5xl shadow-inner border border-gray-700">
-                    <i class="fa-solid fa-globe"></i>
-                </div>
-            </div>
-            <div class="flex-grow">
-                <span class="text-brandPurple font-semibold uppercase tracking-wider text-sm">Presencia Digital</span>
-                <h2 class="text-3xl font-extrabold text-white mt-1 mb-4">Diseño y Creación de Páginas Web</h2>
-                <p class="text-gray-300 text-lg mb-6 leading-relaxed">
-                    No solo reparamos tu hardware, también construimos tu ventana al mundo. Creamos sitios web modernos, rápidos y adaptados a todos los dispositivos (móviles, tablets, escritorio).
-                </p>
-                <div class="grid sm:grid-cols-2 gap-x-6 gap-y-3 text-gray-400 text-sm mb-6">
-                    <p><i class="fa-solid fa-check text-brandPurple mr-2"></i>Sitios Web Informativos / Corporativos</p>
-                    <p><i class="fa-solid fa-check text-brandPurple mr-2"></i>Tiendas Online (E-commerce)</p>
-                    <p><i class="fa-solid fa-check text-brandPurple mr-2"></i>Diseño Responsivo (Se ve bien en todo)</p>
-                    <p><i class="fa-solid fa-check text-brandPurple mr-2"></i>Optimización para Motores de Búsqueda (SEO)</p>
-                </div>
-                <a href="https://wa.me/524271219853?text=Hola,%20quiero%20cotizar%20una%20página%20web" target="_blank" class="inline-flex bg-brandPurple hover:bg-brandPink text-white font-bold px-6 py-3 rounded-lg shadow-lg transition items-center gap-2">
-                    <i class="fa-solid fa-code"></i> Cotizar Mi Sitio Web
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. POR QUÉ ELEGIRNOS -->
-    <section id="nosotros" class="bg-gray-900 py-20 border-t border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-3 gap-8 text-center">
-                <div class="p-6 bg-brandDark rounded-xl border border-gray-800 shadow-xl">
-                    <i class="fa-solid fa-headset text-4xl text-brandCyan mb-4"></i>
-                    <h3 class="font-bold text-xl mb-2 text-white">Atención Remota y En Sitio</h3>
-                    <p class="text-gray-400 text-sm">Resolvemos problemas a distancia de manera rápida o visitamos tus instalaciones para una solución presencial.</p>
-                </div>
-                <div class="p-6 bg-brandDark rounded-xl border border-gray-800 shadow-xl">
-                    <i class="fa-solid fa-user-shield text-4xl text-brandCyan mb-4"></i>
-                    <h3 class="font-bold text-xl mb-2 text-white">Enfoque Corporativo</h3>
-                    <p class="text-gray-400 text-sm">Entendemos la importancia de que tu negocio no se detenga. Minimización total de tiempos de inactividad.</p>
-                </div>
-                <div class="p-6 bg-brandDark rounded-xl border border-gray-800 shadow-xl">
-                    <i class="fa-solid fa-file-invoice-dollar text-4xl text-brandCyan mb-4"></i>
-                    <h3 class="font-bold text-xl mb-2 text-white">Soluciones Integrales</h3>
-                    <p class="text-gray-400 text-sm">TI, Redes, POS y ahora también Desarrollo Web. Un solo aliado para todas tus necesidades tecnológicas.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. CONTACTO CON FORMSPREE Y AJAX -->
-    <section id="contacto" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-12">
-            <div>
-                <h2 class="text-3xl font-extrabold text-white">¿Hablamos de tu próximo paso tecnológico?</h2>
-                <p class="mt-4 text-gray-400">Contáctanos para una valoración de tus sistemas o para empezar a diseñar tu página web.</p>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contacto Directo</h3>
+                <p style="margin-bottom: 25px; color: var(--text-muted);">Estamos listos para atender los requerimientos tecnológicos de tu negocio.</p>
                 
-                <div class="mt-10 space-y-5">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-gray-800 text-brandCyan rounded-full flex items-center justify-center border border-gray-700">
-                            <i class="fa-brands fa-facebook-f text-lg"></i>
-                        </div>
-                        <div>
-                            <span class="text-xs text-gray-500 block">Facebook Oficial</span>
-                            <a href="https://www.facebook.com/people/Soporte-y-Soluciones-TI-LJH/61579187381409/" target="_blank" class="font-semibold text-white hover:text-brandCyan text-lg">Soporte y Soluciones TI LJH</a>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-gray-800 text-green-500 rounded-full flex items-center justify-center border border-gray-700">
-                            <i class="fa-brands fa-whatsapp text-xl"></i>
-                        </div>
-                        <div>
-                            <span class="text-xs text-gray-500 block">Atención Rápida</span>
-                            <span class="font-semibold text-white text-lg">Vía WhatsApp / Llamada Directa</span>
-                        </div>
-                    </div>
-                </div>
+                <p><strong>📍 Ubicación de Servicio:</strong><br>Querétaro, Polotitlán, Tecozautla y áreas metropolitanas.</p><br>
+                <p><strong>📞 Teléfono / WhatsApp:</strong><br>+52 442 226 0201</p><br>
+                <p><strong>✉️ Correo Electrónico:</strong><br>contacto@soluciones-ti.com.mx</p>
             </div>
 
-            <!-- Formulario de Contacto -->
-            <div class="bg-gray-900 p-8 rounded-xl shadow-2xl border border-gray-800">
-                <form id="contact-form" action="https://formspree.io/f/maewbqye" method="POST" class="space-y-5">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-1.5">Nombre Completo</label>
-                        <input type="text" name="nombre" required class="w-full px-4 py-2.5 bg-brandDark border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-brandCyan focus:border-brandCyan focus:outline-none placeholder-gray-600" placeholder="Tu nombre">
+            <div class="contact-form">
+                <form action="#" method="POST" onsubmit="alert('¡Gracias por comunicarte! Un especialista te contactará a la brevedad.'); return false;">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo *</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Ej. Carlos Mendoza">
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-1.5">Empresa / Negocio</label>
-                        <input type="text" name="empresa" class="w-full px-4 py-2.5 bg-brandDark border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-brandCyan focus:border-brandCyan focus:outline-none placeholder-gray-600" placeholder="Nombre de tu negocio">
+
+                    <div class="form-group">
+                        <label for="contacto_input">Teléfono / WhatsApp *</label>
+                        <input type="text" id="contacto_input" name="contacto" required placeholder="Ej. 442 123 4567">
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-1.5">Servicio Requerido</label>
-                        <select name="servicio" class="w-full px-4 py-2.5 bg-brandDark border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-brandCyan focus:border-brandCyan focus:outline-none">
-                            <option>Soporte Técnico / Mantenimiento</option>
-                            <option>Redes y VPN</option>
-                            <option>Puntos de Venta (POS)</option>
-                            <option>Diseño / Desarrollo de Página Web</option>
-                            <option>Seguridad y Respaldo</option>
-                            <option>Otro</option>
+
+                    <div class="form-group">
+                        <label for="servicio">Servicio de Interés *</label>
+                        <select id="servicio" name="servicio" required>
+                            <option value="">-- Selecciona una opción --</option>
+                            <option value="redes">Redes y Cableado Estructurado</option>
+                            <option value="cctv">Cámaras de Seguridad y CCTV</option>
+                            <option value="soporte">Soporte Técnico y Pólizas TI</option>
+                            <option value="pos">Sistemas de Punto de Venta (POS)</option>
+                            <option value="ciberseguridad">Ciberseguridad y VPN</option>
+                            <option value="otro">Otro Requerimiento</option>
                         </select>
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-1.5">Mensaje / Detalle</label>
-                        <textarea name="mensaje" rows="3" required class="w-full px-4 py-2.5 bg-brandDark border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-brandCyan focus:border-brandCyan focus:outline-none placeholder-gray-600" placeholder="Describe brevemente qué necesitas..."></textarea>
-                    </div>
-                    <button id="submit-btn" type="submit" class="w-full bg-brandPurple hover:bg-brandPink text-white font-bold py-3.5 rounded-lg transition text-lg shadow-lg">
-                        Enviar Mensaje
-                    </button>
-                </form>
 
-                <!-- Mensaje de confirmación o error -->
-                <div id="form-status" class="hidden mt-4 text-center p-3 rounded-lg text-sm font-medium"></div>
+                    <div class="form-group">
+                        <label for="mensaje">Detalles del Proyecto o Consulta</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describe brevemente tus requerimientos o número de equipos..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Enviar Solicitud de Cotización</button>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-black py-10 text-center text-sm border-t border-gray-800 text-gray-500">
-        <p>&copy; Soporte y Soluciones TI LJH. Todos los derechos reservados.</p>
+    <!-- Footer -->
+    <footer>
+        <div style="text-align: center;">
+            <p><strong>SOLUCIONES TI & INFRAESTRUCTURA</strong></p>
+            <p>Servicios de Tecnología, Redes, Seguridad y Soporte Computacional.</p>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Soluciones TI. Todos los derechos reservados.
+        </div>
     </footer>
 
-    <!-- BOTÓN FLOTANTE WHATSAPP -->
-    <a href="https://wa.me/524271219853?text=Hola,%20requiero%20información%20sobre%20sus%20servicios" target="_blank" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-4xl shadow-2xl transition z-50 hover:scale-110">
-        <i class="fa-brands fa-whatsapp"></i>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/524422260201?text=Hola,%20me%20interesa%20una%20cotización%20de%20servicios%20TI" class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
+        💬
     </a>
 
-    <!-- SCRIPT AJAX PARA FORMSPREE -->
-    <script>
-        const form = document.getElementById("contact-form");
-        const status = document.getElementById("form-status");
-        const submitBtn = document.getElementById("submit-btn");
-
-        async function handleSubmit(event) {
-            event.preventDefault();
-            
-            // Estado visual de envío
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Enviando...';
-            status.classList.add("hidden");
-
-            const data = new FormData(event.target);
-            
-            try {
-                const response = await fetch(event.target.action, {
-                    method: form.method,
-                    body: data,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    status.classList.remove("hidden", "bg-red-900/50", "text-red-300", "border-red-800");
-                    status.classList.add("bg-green-900/50", "text-green-300", "border", "border-green-800");
-                    status.innerHTML = "¡Gracias! Tu mensaje ha sido enviado correctamente. Te contactaremos pronto.";
-                    form.reset();
-                } else {
-                    const data = await response.json();
-                    throw new Error(data.errors ? data.errors.map(error => error.message).join(", ") : "Error al enviar");
-                }
-            } catch (error) {
-                status.classList.remove("hidden", "bg-green-900/50", "text-green-300", "border-green-800");
-                status.classList.add("bg-red-900/50", "text-red-300", "border", "border-red-800");
-                status.innerHTML = "Hubo un problema al enviar tu mensaje. Por favor intenta de nuevo o por WhatsApp.";
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = "Enviar Mensaje";
-            }
-        }
-
-        form.addEventListener("submit", handleSubmit);
-    </script>
 </body>
 </html>
