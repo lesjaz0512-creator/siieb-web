@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soporte Técnico y Punto de Venta en Querétaro y San Juan del Río | Soporte TI LJH</title>
-  <meta name="description" content="Soporte técnico 24/7 en Querétaro, San Juan del Río, Tecozautla y Polotitlán. Instalación de Punto de Venta, reparación y formateo de computadoras, redes. Servicios desde $499. WhatsApp 427 121 9853.">
+  <meta name="description" content="Soporte técnico 24/7 en Querétaro, San Juan del Río, Tecozautla y Polotitlán. Punto de Venta, cambio a SSD y RAM, reparación, soporte remoto, impresoras y redes. Servicios desde $499. WhatsApp 427 121 9853.">
   <meta name="theme-color" content="#0a0d12">
   <link rel="icon" type="image/jpeg" href="logo.jpeg">
   <meta property="og:type" content="website">
@@ -22,7 +22,8 @@
     "telephone": "+52 427 121 9853",
     "priceRange": "Desde $499 MXN",
     "openingHours": "Mo-Su 00:00-23:59",
-    "areaServed": ["Querétaro", "San Juan del Río", "Tecozautla", "Polotitlán"]
+    "areaServed": ["Querétaro", "San Juan del Río", "Tecozautla", "Polotitlán"],
+    "sameAs": ["https://www.facebook.com/share/18P18SLjGY/"]
   }
   </script>
   <style>
@@ -434,6 +435,41 @@
 
     .price-note strong { color: var(--cyan-neon); font-size: 1.2rem; }
 
+    /* Galería de trabajos */
+    .gallery-section {
+      background: #080b10;
+      padding: 80px 6%;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .gallery-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .gallery-grid figure {
+      background: var(--card-bg);
+      border: 1px solid var(--border-glow);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-grid figcaption {
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
     /* Zona de cobertura */
     .coverage-section {
       padding: 80px 6%;
@@ -576,6 +612,7 @@
     <a href="#" class="logo"><img src="logo.jpeg" alt="Logo Soporte TI LJH">Soporte TI <span>LJH</span></a>
     <nav>
       <a href="#servicios">Servicios</a>
+      <a href="#trabajos" class="hide-mobile">Trabajos</a>
       <a href="#cobertura" class="hide-mobile">Cobertura</a>
       <a href="#proceso" class="hide-mobile">Proceso</a>
       <a href="#contacto">Contacto</a>
@@ -631,9 +668,52 @@
         <h3>Redes e Infraestructura</h3>
         <p>Configuración de redes locales, cableado estructurado, ruteadores y aseguramiento de conexión para tu local u oficina.</p>
       </div>
+
+      <div class="card">
+        <div class="card-icon">🚀</div>
+        <h3>Repotenciación de Equipos</h3>
+        <p>Cambio de disco duro a SSD y aumento de memoria RAM para que tu computadora encienda y trabaje mucho más rápido.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎧</div>
+        <h3>Soporte Remoto</h3>
+        <p>Nos conectamos a tu equipo de forma segura para resolver fallas y configurar programas sin salir de casa u oficina.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🖨️</div>
+        <h3>Impresoras y Software</h3>
+        <p>Configuración de impresoras, mantenimiento a sistemas de tinta continua e instalación de controladores y aplicaciones.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🧑‍💻</div>
+        <h3>Páginas Web y Correos Corporativos</h3>
+        <p>Creación de páginas web para tu negocio y configuración de correos con el dominio de tu empresa.</p>
+      </div>
     </div>
 
+    <p class="price-note" style="margin-top:20px;">Atención <strong style="font-size:1rem;">presencial a domicilio</strong> o <strong style="font-size:1rem;">remota</strong>, como te convenga.</p>
+
     <p class="price-note">Servicios desde <strong>$499 MXN</strong>. El costo final se cotiza después del diagnóstico, sin cargos sorpresa.</p>
+  </section>
+
+  <!-- Trabajos realizados -->
+  <section class="gallery-section" id="trabajos">
+    <h2 class="section-title">Trabajos Realizados</h2>
+    <p class="section-subtitle">Algunos equipos que hemos atendido</p>
+
+    <div class="gallery-grid">
+      <figure><img src="fotos/cambio-ssd.jpg" alt="Cambio de disco duro a SSD Kingston en laptop HP" loading="lazy"><figcaption>Cambio de disco duro a SSD</figcaption></figure>
+      <figure><img src="fotos/repotenciacion-dell.jpg" alt="Laptop Dell repotenciada con SSD y memoria RAM" loading="lazy"><figcaption>Repotenciación: SSD y RAM</figcaption></figure>
+      <figure><img src="fotos/pasta-termica.jpg" alt="Procesador de laptop Lenovo durante cambio de pasta térmica" loading="lazy"><figcaption>Cambio de pasta térmica</figcaption></figure>
+      <figure><img src="fotos/limpieza-ventilador.jpg" alt="Limpieza de ventilador y disipador de laptop" loading="lazy"><figcaption>Limpieza de ventilador y disipador</figcaption></figure>
+      <figure><img src="fotos/mantenimiento-ram.jpg" alt="Memoria RAM y disipador con polvo antes del mantenimiento" loading="lazy"><figcaption>Mantenimiento preventivo</figcaption></figure>
+      <figure><img src="fotos/ram-ddr4.jpg" alt="Instalación de memoria RAM DDR4 en laptop" loading="lazy"><figcaption>Aumento de memoria RAM</figcaption></figure>
+      <figure><img src="fotos/mantenimiento-hp.jpg" alt="Laptop HP abierta para mantenimiento interno" loading="lazy"><figcaption>Mantenimiento interno de laptop</figcaption></figure>
+      <figure><img src="fotos/impresora-tinta.jpg" alt="Reparación de impresora de tinta continua" loading="lazy"><figcaption>Reparación de impresora de tinta</figcaption></figure>
+    </div>
   </section>
 
   <!-- Zona de cobertura -->
@@ -726,6 +806,7 @@
       <div class="direct-contact">
         <a href="https://wa.me/524271219853?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20necesito%20soporte%20t%C3%A9cnico." target="_blank" rel="noopener">WhatsApp 427 121 9853</a>
         <a href="tel:+524271219853">Llamar ahora</a>
+        <a href="https://www.facebook.com/share/18P18SLjGY/" target="_blank" rel="noopener">Facebook</a>
       </div>
 
       <p class="form-divider">o déjanos tus datos y te contactamos</p>
@@ -760,7 +841,7 @@
   <!-- Footer -->
   <footer>
     <p>Querétaro · San Juan del Río · Tecozautla · Polotitlán · Atención 24/7</p>
-    <p>WhatsApp y teléfono: <a href="tel:+524271219853">427 121 9853</a></p>
+    <p>WhatsApp y teléfono: <a href="tel:+524271219853">427 121 9853</a> · <a href="https://www.facebook.com/share/18P18SLjGY/" target="_blank" rel="noopener">Síguenos en Facebook</a></p>
     <p>&copy; 2026 Soporte y Soluciones TI LJH. Todos los derechos reservados.</p>
   </footer>
 
